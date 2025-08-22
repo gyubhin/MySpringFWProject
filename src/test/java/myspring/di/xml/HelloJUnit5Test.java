@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-import org.junit.jupiter.api.Assertions;
+//static import
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HelloJUnit5Test {
 	@Test
@@ -19,8 +20,8 @@ public class HelloJUnit5Test {
 		System.out.println(helloById == helloByType);
 		
 		//Assertions.assertSame() 사용 -> testcase 성공(싱글톤)
-		Assertions.assertSame(helloById, helloByType);
+		assertSame(helloById, helloByType);
 		//notsame으로 물어보면 같기때문에 testcase 실패
-		//Assertions.assertNotSame(helloById, helloByType);
+		//assertNotSame(helloById, helloByType);
 	}
 }
