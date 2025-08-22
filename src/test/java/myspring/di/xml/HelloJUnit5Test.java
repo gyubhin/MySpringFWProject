@@ -4,8 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-//static import
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Assertions;
 
 public class HelloJUnit5Test {
 	@Test
@@ -17,11 +16,11 @@ public class HelloJUnit5Test {
 		Hello helloByType = context.getBean("hello", Hello.class);
 		
 		//주소를 비교해서 Singleton 인지 확인하기
-		System.out.println(helloById == helloByType); //false
+		System.out.println(helloById == helloByType);
 		
-		//Assertions.assertSame() 사용 -> testcase 실패(싱글톤X)
-		assertSame(helloById, helloByType);
+		//Assertions.assertSame() 사용 -> testcase 성공(싱글톤)
+		Assertions.assertSame(helloById, helloByType);
 		//notsame으로 물어보면 같기때문에 testcase 실패
-		//assertNotSame(helloById, helloByType);
+		//Assertions.assertNotSame(helloById, helloByType);
 	}
 }
