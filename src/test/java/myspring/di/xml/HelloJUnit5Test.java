@@ -23,5 +23,9 @@ public class HelloJUnit5Test {
 		assertSame(helloById, helloByType);
 		//notsame으로 물어보면 같기때문에 testcase 실패
 		//assertNotSame(helloById, helloByType);
+		
+		//<property name="name" value="스프링"/> 설정 테스트
+		//값 비교하기
+		assertEquals("Hello 스프링", helloByType.sayHello());
 	}
 }
