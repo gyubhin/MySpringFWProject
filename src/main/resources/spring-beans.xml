@@ -5,9 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+	<!-- 전략 2 시작 (bean을 어노테이션으로 선언 후, 해당 bean을 스캐닝)-->
 	<!-- Component Scanning -->
 	<context:component-scan base-package="myspring.di.annot"/>
+	<!-- 젼략 2 종료 -->
 	
+	<!-- 전략 1 시작(모든 bean을 xml에 설정) -->
 	<!-- StringPrinter 클래스를 Bean으로 등록 -->
 	<!-- id 이름은 보통 클래스 이름과 똑같이 주고 시작은 소문자로 -->
 	<bean id="stringPrinter" class="myspring.di.xml.StringPrinter"/>
@@ -33,5 +36,6 @@
 		<constructor-arg index="0" value="생성자"/>
 		<constructor-arg index="1" ref="consolePrinter"/>
 	</bean>
+	<!-- 전략 1 종료 -->
 	
 </beans>

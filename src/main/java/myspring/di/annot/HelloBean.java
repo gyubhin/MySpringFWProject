@@ -10,20 +10,27 @@ import org.springframework.stereotype.Component;
 //<bean id="helloBean" class="myspring.di.annot.HelloBean" />
 @Component("helloBean")
 public class HelloBean {
-	@Value("어노테이션") //<property name="name" value="어노테이션"/>
+	//<property name="name" value="어노테이션"/>
+	//전략2 - setter injection
+	//@Value("어노테이션") 
 	String name;
 	
 	//<property name="printer" ref="stringPrinter">
-	@Autowired
-	@Qualifier("stringPrinterBean")
+	//전략2 - setter injection	
+//	@Autowired
+//	@Qualifier("stringPrinterBean")
 	PrinterBean printer;
+	
 	List<String> names;
 
 	public HelloBean() {
 		System.out.println(this.getClass().getName()+" 생성자가 호출됨.");
 	}
 
-	public HelloBean(String name, PrinterBean printer) {
+	//전략2 - constructor injection
+	@Autowired
+	public HelloBean(@Value("생성자 어노테이션") String name, 
+			@Qualifier("stringPrinterBean") PrinterBean printer) {
 		System.out.println(this.getClass().getName()+"Overloaded 생성자가 호출됨.");
 		this.name = name;
 		this.printer = printer;
